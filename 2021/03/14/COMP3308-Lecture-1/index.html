@@ -1,0 +1,638 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>COMP3308-Lecture-1 - Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Ruoyang Lu,"> 
+    <meta name="description" content="Lecture Outline
+4 items with search problem
+Puzzle Questions
+8 Queens Problems Formulations
+Tree Se,"> 
+    <meta name="author" content="Ruoyang Lu"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://michaellry.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">COMP3308-Lecture-1</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="javascript:;"><b>「 </b>Article<b> 」</b></a>
+                
+                March 14, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/03/14/COMP3308-Lecture-1/" title="COMP3308-Lecture-1" class="">COMP3308-Lecture-1</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    8k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    7 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h3 id="Lecture-Outline"><a href="#Lecture-Outline" class="headerlink" title="Lecture Outline"></a>Lecture Outline</h3><ul>
+<li>4 items with search problem</li>
+<li>Puzzle Questions</li>
+<li>8 Queens Problems Formulations</li>
+<li>Tree Search algorithms： expanding states</li>
+<li>Nodes vs States</li>
+<li>Search Strategies</li>
+<li>Uninformed search strategies</li>
+<li>BFS</li>
+<li>UCS</li>
+<li>DFS</li>
+<li>DLS</li>
+<li>Greedy Search</li>
+</ul>
+<h4 id="Search-Problem-的四个项目"><a href="#Search-Problem-的四个项目" class="headerlink" title="Search Problem 的四个项目"></a>Search Problem 的四个项目</h4><ul>
+<li>   initial state</li>
+<li>   goal state</li>
+<li>   operators</li>
+<li>   path cost function</li>
+</ul>
+<p>​     Solution: 从intial 到 goal state的一个路径</p>
+<ul>
+<li>最小路径支出</li>
+</ul>
+<h4 id="choosing-states-and-acitons"><a href="#choosing-states-and-acitons" class="headerlink" title="choosing states and acitons"></a>choosing states and acitons</h4><ul>
+<li>removing unnecessary details</li>
+</ul>
+<h4 id="Puzzle-问题"><a href="#Puzzle-问题" class="headerlink" title="Puzzle 问题"></a>Puzzle 问题</h4><ul>
+<li>state就是每一个棋盘的设置</li>
+<li>operators就是移动里面每一个旗子</li>
+<li>goal state就是提供的目标state</li>
+<li>path cost是里面最后所用到的所有移动</li>
+</ul>
+<h4 id="8-queens-游戏的两个Problem-Formulation"><a href="#8-queens-游戏的两个Problem-Formulation" class="headerlink" title="8 queens 游戏的两个Problem Formulation"></a>8 queens 游戏的两个Problem Formulation</h4><ul>
+<li>刚开始没有棋子，把它排成goal state的状态 （incremental）<ul>
+<li>这里面需要非常多的state</li>
+</ul>
+</li>
+<li>刚开始有8个棋子，然后移动成goal state的状态 （goal-state like）</li>
+</ul>
+<h4 id="Tree-Search-algorithms-Expanding-states"><a href="#Tree-Search-algorithms-Expanding-states" class="headerlink" title="Tree-Search algorithms :Expanding states"></a>Tree-Search algorithms :<strong>Expanding states</strong></h4><ul>
+<li>去检查node还有没有更多的node<ul>
+<li>如果有继续搜索</li>
+<li>如果没有就返回路径</li>
+</ul>
+</li>
+<li><strong>Two - Lists for keeping</strong><ul>
+<li>expanded ： mean generating the children<ul>
+<li>已经expanded的node</li>
+</ul>
+</li>
+<li>Fringe <ul>
+<li>已经被生成但是还没有被expand的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Node-vs-States"><a href="#Node-vs-States" class="headerlink" title="Node vs States"></a>Node vs States</h4><ul>
+<li><p>**相似但是不完全一样 **</p>
+</li>
+<li><p>node：表示一个states, 是一个数据结构用在树搜索中的, 包括了parent, children还有其他的东西</p>
+<p>![image-20210310142232190](/Users/michaellu/Library/Application Support/typora-user-images/image-20210310142232190.png)</p>
+</li>
+</ul>
+<h4 id="Search-Strategies"><a href="#Search-Strategies" class="headerlink" title="Search Strategies"></a>Search Strategies</h4><p><strong>It defines which node from the fringe is most promising and should be expanded next</strong></p>
+<p>评估方法：</p>
+<pre><code>- completeness 能不能**保证**找到solution
+- optimality 能不能**保证**找到最优解
+- time complexity
+- space complexity
+- 
+</code></pre>
+<h4 id="Uniformed-Blind-Search-Strategies"><a href="#Uniformed-Blind-Search-Strategies" class="headerlink" title="Uniformed (Blind) Search Strategies"></a>Uniformed (Blind) Search Strategies</h4><ul>
+<li>Uninformed strategies<ul>
+<li><strong>不知道任务的特定启发知识</strong></li>
+<li>通过一个系统的方式去生成子node</li>
+<li>知道这个子node是不是目标node</li>
+<li>不知道非目标node的时候是不是比另一个node好<ul>
+<li>UCS除外，但是这是基于一个heuristic knowledge</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>5 uniformed search strategeis<ul>
+<li>Breadth-first</li>
+<li>Depth-limited</li>
+<li>Uninform-cost</li>
+<li>Iterative deepening</li>
+<li>Depth-first</li>
+</ul>
+</li>
+</ul>
+<h4 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h4><ul>
+<li><strong>展开最浅且未展开的node</strong></li>
+<li><strong>在fringe list的最后面添加子node</strong></li>
+<li>Solution Path通过**母节点 **找到最上的节点</li>
+<li>最浅的节点不是最优解</li>
+<li>![image-20210310143826304](/Users/michaellu/Library/Application Support/typora-user-images/image-20210310143826304.png)</li>
+</ul>
+<h4 id="UCS-Uniform-Cost-Search"><a href="#UCS-Uniform-Cost-Search" class="headerlink" title="UCS Uniform Cost Search"></a>UCS Uniform Cost Search</h4><ul>
+<li><p>from least-cost to most cost</p>
+</li>
+<li><p>因为在BFS中根本不会去考量step cost。所有的节点都是系统性的在每一层中扩展，从最左到最右</p>
+</li>
+<li><p>BFS是寻找最浅的目标节点，但是这可能并不不是<strong>最优</strong>的解法</p>
+</li>
+<li><p>UCS会考虑step cost</p>
+<ul>
+<li>Expand the <strong>least-cost</strong> unexpanded node<ul>
+<li>node <em>n</em> with eht lowest paht cost <em>g(n)</em> from the initial state</li>
+</ul>
+</li>
+<li>在fringe中插入节点，从root node开始增加path cost</li>
+</ul>
+</li>
+<li><p>在每一个expand之后的node都需要去检查是不是goal node</p>
+</li>
+</ul>
+<h4 id="UCS-and-BFS"><a href="#UCS-and-BFS" class="headerlink" title="UCS and BFS"></a>UCS and BFS</h4><ul>
+<li> g(n) is the cost from the root node to a given node</li>
+<li> step cost is the cost between 2 nodes</li>
+<li>Some definitions:<ul>
+<li>step cost is 1</li>
+<li>step cost is the same - generalization of case 1</li>
+<li>g(n) = depth(n)</li>
+<li>g(n) is the same at each level and increasing as the level increases</li>
+</ul>
+</li>
+</ul>
+<h4 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h4><ul>
+<li>Expand the deepest unexpanded node</li>
+<li>insert successors at the front of the fringe</li>
+<li>it’s not <strong>complete</strong>, 无限深度的空间时候会失效</li>
+<li>not <strong>optimal</strong>, 可能比最优解需要的时间更长, 哪怕step cost是1</li>
+<li>time complexity: O(b^m)</li>
+<li>space : O(bm), <strong>线性的, 非常好</strong>, 因为是深度优先搜索，在有边的情况下是一直遍历, 所以是线性情况</li>
+<li>![image-20210310145852395](/Users/michaellu/Library/Application Support/typora-user-images/image-20210310145852395.png</li>
+</ul>
+<p>![image-20210310145857159](/Users/michaellu/Library/Application Support/typora-user-images/image-20210310145857159.png)</p>
+<h4 id="Depth-Limited-Search"><a href="#Depth-Limited-Search" class="headerlink" title="Depth Limited Search"></a>Depth Limited Search</h4><p>是DFs加上了深度限制 <em>l</em></p>
+<ul>
+<li> complete： Yes, 因为限制了搜索深度</li>
+<li> optimal：no</li>
+<li> time：O(b^1)</li>
+<li> space: O(bl)</li>
+</ul>
+<p>但是这涉及到一个问题，如何选择一个不错的限制呢？</p>
+<p><strong>很多时候我们在解决问题之前是不知道state space的diameter的。</strong> </p>
+<h4 id="Iterative-Deepening-Search-IDS"><a href="#Iterative-Deepening-Search-IDS" class="headerlink" title="Iterative Deepening Search (IDS)"></a>Iterative Deepening Search (IDS)</h4><p>尝试在所有可能的depth limited search中应用DFS</p>
+<ul>
+<li>在深度从0到无限的时候应用dfs算法</li>
+<li>尝试去整合DFS和BFS的优势<ul>
+<li>DFS的低内存和BFS的完整性(completeness if b is finite and optimality if step costs are the same by <strong>reapted DFS</strong> searches with increased depth)</li>
+<li>接近root node的会被expand multiple times，但是这些相关的nodes数量很小，多数的nodes是靠近leaf nodes的，并不是root nodes</li>
+</ul>
+</li>
+<li>Complete: As BFS</li>
+<li>Optimal: yes, as BFS<ul>
+<li>DFS is not optimal as the depth goes infinity</li>
+</ul>
+</li>
+<li>Time: O(b^d)</li>
+<li>Space: O(bd), as DFS, linear</li>
+<li>如果拿IDS和DFS对比的话，哪里可以优化一下：<ul>
+<li>completeness和optimality</li>
+</ul>
+</li>
+</ul>
+<h4 id="Informed-vs-Uninformed-Search"><a href="#Informed-vs-Uninformed-Search" class="headerlink" title="Informed vs Uninformed Search"></a>Informed vs Uninformed Search</h4><ul>
+<li>Search strategies defines the order of node expansion<ul>
+<li>Uninformed<ul>
+<li>系统性的展开节点<ul>
+<li>就好像BFS一层一层，从左边到右边展开一样</li>
+</ul>
+</li>
+<li>能知道一个给定节点是目标节点还是非目标节点</li>
+<li>不能对比两个非目标节点<ul>
+<li><strong>do not</strong> know if one non-goal node is **better ** than another one based on heuristic knowlegde</li>
+</ul>
+</li>
+<li>在寻找solution的时候一般是低效的</li>
+</ul>
+</li>
+<li>Informed <ul>
+<li>可以对比非目标节点和目标节点<ul>
+<li>知道非目标节点是不是比另一个更好</li>
+</ul>
+</li>
+<li>更加高效</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Greedy-Search"><a href="#Greedy-Search" class="headerlink" title="Greedy Search"></a>Greedy Search</h4><ul>
+<li>使用h value作为evalution function</li>
+<li><em>h(n)</em> 表示的<strong>estimated</strong> cost from n to a <strong>goal node</strong></li>
+<li>展开拥有最小<em>h</em>的节点<ul>
+<li>则表示的是到目标节点最近的路径</li>
+<li>所以Greedy Search 最小化<em>h</em></li>
+</ul>
+</li>
+<li>Complete: Yes（当空间M是有限的时候）<ul>
+<li>NO, 当空间是无限的时候</li>
+</ul>
+</li>
+<li>Optimal: No</li>
+<li>Time: <em>O(b^m)</em><ul>
+<li>但是一个好的试探算法可以显著提升</li>
+</ul>
+</li>
+<li>Space: O(B^m) 每一个节点都需要保留在内存中</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                
+                    <div class="post-nav-item">Next Post:<a href="/2021/03/14/1/" rel="next" 
+                        title="1">1</a></div>
+                                
+            </div>   
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/profile_use.jpg" height=300 width=300></img>
+                    <p>Ruoyang Lu</p>
+                    <span>仰望星空的人终将归于星空</span>
+                    <dl>
+                        <dd><a href="https://github.com/Michael5531" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://www.linkedin.com/in/ruoyang-lu-61213b144/" target="_blank"><span
+                                    class=" iconfont icon-linkedin"></span></a></dd>
+                        <!-- <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd> -->
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">4 <p>Articles</p></a></li>
+                    <li><a href="/categories">0 <p>Categories</p></a></li>
+                    <li><a href="/tags">0 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lecture-Outline"><span class="toc-number">1.</span> <span class="toc-text">Lecture Outline</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            Ruoyang Lu
+        </span>.
+        <!-- Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span> -->
+        <!-- <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.5" target="_blank" rel="noopener">v1.4.5</a></small> -->
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['仰望星空的人终将归于星空', 'Sidere Mens Eadem Mutato'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+ <!-- 例：百度统计 --> <script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?your_code"; var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s); })(); </script> 
+
+</html>
